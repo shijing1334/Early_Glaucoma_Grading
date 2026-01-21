@@ -1,4 +1,5 @@
--1. Download `opencode_nodata。zip`, then extract the code after decompression.
+-1. Download `opencode_nodata.zip`, then extract the code after decompression.
+
 0. Go to https://github.com/facebookresearch/jepa and download VIT-L from Pretrained models. Place it in the checkpoints folder.
 
 1. Run `0generate_CSV.py` #Generates CSV files conforming to the code requirements for the data.

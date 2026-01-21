@@ -1,0 +1,43 @@
+nodes: 1
+tasks_per_node: 1
+tag:
+eval_name: video_classification_frozen
+resume_checkpoint: false
+data:
+  dataset_train:
+  dataset_val:
+  dataset_type: VideoDataset
+  num_classes: 3
+  frames_per_clip: 4
+  num_segments: 16
+  num_views_per_segment: 2
+  frame_step: 2
+optimization:
+  attend_across_segments: true
+  num_epochs: 100
+  resolution: 224
+  batch_size: 6
+  weight_decay: 0.01
+  lr: 0.0001
+  start_lr: 0.00001
+  final_lr: 0.000001
+  warmup: 3
+  use_bfloat16: true
+pretrain:
+  model_name: vit_large
+  checkpoint_key: target_encoder
+  clip_duration: null
+  frames_per_clip: 4
+  tubelet_size: 2
+  uniform_power: true
+  use_silu: false
+  tight_silu: false
+  use_sdpa: true
+  patch_size: 16
+  folder:
+  checkpoint: vitl16.pth.tar
+  write_tag: jepa
+cascade:
+  #cascade_thresholds: [0.994, 0.991, 1]
+  #cascade_thresholds: [0.996, 0.995, 0.995]
+  cascade_thresholds: [0.994, 0.998, 1.0]
